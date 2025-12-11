@@ -1,0 +1,358 @@
+/* Contenedor de efectos - posición fija para no afectar el layout */
+.snow-container,
+.leaves-container,
+.flowers-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+  /* Evitar que se vean elementos acumulados en la parte superior */
+  clip-path: inset(0 0 0 0);
+}
+
+/* Efecto de Nieve */
+.snowflake {
+  position: absolute;
+  top: -50px;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: snowfall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(20px) rotate(180deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(calc(100vh + 50px)) translateX(-20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Efecto de Hojas de Otoño */
+.autumn-leaf {
+  position: absolute;
+  top: -50px;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: leafFall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes leafFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateX(30px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-20px) rotate(180deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateX(15px) rotate(270deg);
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(calc(100vh + 50px)) translateX(-25px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Efecto de Flores/Pétalos */
+.spring-petal {
+  position: absolute;
+  top: -50px;
+  font-size: 1.3rem;
+  opacity: 0;
+  animation: petalFall linear infinite;
+  pointer-events: none;
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateX(25px) rotate(90deg) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-15px) rotate(180deg) scale(0.9);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateX(20px) rotate(270deg) scale(1.05);
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(calc(100vh + 50px)) translateX(-30px) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* Efecto de Sol (Verano) */
+.sun-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.sun-container.header-sun {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+}
+
+.sun-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+  animation: sunPulse 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+.sun-container.header-sun .sun-center {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
+}
+
+.sun-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: sunRotate 15s linear infinite;
+}
+
+.sun-container:not(.header-sun) .sun-rays {
+  animation: sunRotateFixed 20s linear infinite;
+}
+
+.sun-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 25px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.9), rgba(255, 200, 0, 0.4));
+  transform-origin: center top;
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(255, 215, 0, 0.6);
+}
+
+.sun-container.header-sun .sun-ray {
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(255, 200, 0, 0.3));
+}
+
+.sun-ray.ray-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-32px); }
+.sun-ray.ray-2 { transform: translate(-50%, -50%) rotate(45deg) translateY(-32px); }
+.sun-ray.ray-3 { transform: translate(-50%, -50%) rotate(90deg) translateY(-32px); }
+.sun-ray.ray-4 { transform: translate(-50%, -50%) rotate(135deg) translateY(-32px); }
+.sun-ray.ray-5 { transform: translate(-50%, -50%) rotate(180deg) translateY(-32px); }
+.sun-ray.ray-6 { transform: translate(-50%, -50%) rotate(225deg) translateY(-32px); }
+.sun-ray.ray-7 { transform: translate(-50%, -50%) rotate(270deg) translateY(-32px); }
+.sun-ray.ray-8 { transform: translate(-50%, -50%) rotate(315deg) translateY(-32px); }
+
+.sun-container.header-sun .sun-ray.ray-1 { transform: translate(-50%, -50%) rotate(0deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-2 { transform: translate(-50%, -50%) rotate(45deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-3 { transform: translate(-50%, -50%) rotate(90deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-4 { transform: translate(-50%, -50%) rotate(135deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-5 { transform: translate(-50%, -50%) rotate(180deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-6 { transform: translate(-50%, -50%) rotate(225deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-7 { transform: translate(-50%, -50%) rotate(270deg) translateY(-24px); }
+.sun-container.header-sun .sun-ray.ray-8 { transform: translate(-50%, -50%) rotate(315deg) translateY(-24px); }
+
+.sun-container:not(.header-sun) {
+  animation: sunRotateFixed 20s linear infinite;
+}
+
+@keyframes sunRotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes sunRotateFixed {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes sunPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.95; }
+}
+
+/* Luces Navideñas */
+.christmas-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.christmas-lights.header-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1;
+  overflow: visible;
+}
+
+.christmas-lights.lights-bar {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  margin: 2rem 0;
+  z-index: 1;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lights-wire {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.light-bulb {
+  position: absolute;
+  width: 16px;
+  height: 20px;
+  border-radius: 48% 52% 48% 52% / 65% 65% 35% 35%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: lightBlink 1.5s ease-in-out infinite;
+  opacity: 0.95;
+  background: var(--light-color);
+  filter: drop-shadow(0 0 8px var(--light-color));
+  box-shadow: 
+    0 0 10px var(--light-color),
+    0 0 15px rgba(255, 255, 255, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.light-base {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 0 0 2px 2px;
+  z-index: 1;
+}
+
+.christmas-lights.header-lights .light-bulb {
+  width: 18px;
+  height: 22px;
+}
+
+@keyframes lightBlink {
+  0%, 100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 6px currentColor);
+    box-shadow: 
+      0 0 8px currentColor,
+      0 0 12px rgba(255, 255, 255, 0.2),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 20px currentColor);
+    box-shadow: 
+      0 0 15px currentColor,
+      0 0 25px rgba(255, 255, 255, 0.5),
+      inset 0 2px 6px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sun-container {
+    width: 60px;
+    height: 60px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .sun-center {
+    font-size: 2rem;
+  }
+  
+  .snowflake,
+  .autumn-leaf,
+  .spring-petal {
+    font-size: 1rem;
+  }
+  
+  .christmas-lights {
+    height: 40px;
+  }
+  
+  .light-bulb {
+    width: 8px;
+    height: 8px;
+  }
+}
+

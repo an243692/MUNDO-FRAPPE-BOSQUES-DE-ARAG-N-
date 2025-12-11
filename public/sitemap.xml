@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  IMPORTANTE: Reemplaza "https://mundofrappe.com/" con la URL real de tu sitio
+  Ejemplo: https://mundo-frappe-bosques.web.app/
+  Encuentra tu URL en Firebase Console > Hosting
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Página principal - ACTUALIZA LA URL CON TU DOMINIO REAL -->
+  <url>
+    <loc>https://mundofrappe.com/</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+</urlset>
+

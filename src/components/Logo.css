@@ -1,0 +1,45 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-image {
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Tamaños */
+.logo-small .logo-image {
+  max-height: 50px;
+}
+
+.logo-medium .logo-image {
+  max-height: 70px;
+}
+
+.logo-large .logo-image {
+  max-height: 100px;
+}
+
+@media (max-width: 768px) {
+  .logo-small .logo-image {
+    max-height: 40px;
+  }
+
+  .logo-medium .logo-image {
+    max-height: 55px;
+  }
+
+  .logo-large .logo-image {
+    max-height: 75px;
+  }
+}
+
